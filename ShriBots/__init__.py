@@ -2,6 +2,25 @@ import logging
 import os
 import sys
 import time
+
+# imghdr fix for Python 3.13
+try:
+    import imghdr
+except ImportError:
+    import PIL.Image
+    import io
+    
+    def imghdr_what(file):
+        try:
+            with PIL.Image.open(file) as img:
+                return img.format.lower()
+        except:
+            return None
+    
+    import telegram
+    telegram.files.inputfile.imghdr = type('imghdr', (), {'what': imghdr_what})()
+    sys.modules['imghdr'] = telegram.files.inputfile.imghdr
+
 import telegram.ext as tg
 from telethon.sessions import MemorySession
 from telethon import TelegramClient
@@ -32,6 +51,8 @@ API_HASH = Config.API_HASH
 OWNER_ID = Config.OWNER_ID
 SUPPORT_CHAT = Config.SUPPORT_CHAT
 EVENT_LOGS = Config.EVENT_LOGS
+JOIN_LOGGER = Config.JOIN_LOGGER
+MESSAGE_DUMP = Config.MESSAGE_DUMP
 
 # Bot clients
 updater = tg.Updater(TOKEN, workers=Config.WORKERS, use_context=True)
