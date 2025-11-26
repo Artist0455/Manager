@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: shribots
+    env: python
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "./start.sh"
+    envVars:
+      - key: TOKEN
+        value: "8244179451:AAFPDc1nP5TMfPfLMHsOwzcC9NIS28NLYB0"
+      - key: API_ID
+        value: "25136703"
+      - key: API_HASH
+        value: "accfaf5ecd981c67e481328515c39f89"
+      - key: OWNER_ID
+        value: "8385462088"
+      - key: OWNER_USERNAME
+        value: "shribots"
+      - key: SUPPORT_CHAT
+        value: "shribots"
+      - key: EVENT_LOGS
+        value: "-1003264890660"
