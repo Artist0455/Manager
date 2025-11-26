@@ -5,4 +5,3 @@ tgcrypto==1.2.3
 psutil==5.8.0
 prettytable==2.4.0
 sqlalchemy==1.4.23
-python-decouple==3.6
