@@ -2,25 +2,6 @@ import logging
 import os
 import sys
 import time
-
-# imghdr fix for Python 3.13
-try:
-    import imghdr
-except ImportError:
-    import PIL.Image
-    import io
-    
-    def imghdr_what(file):
-        try:
-            with PIL.Image.open(file) as img:
-                return img.format.lower()
-        except:
-            return None
-    
-    import telegram
-    telegram.files.inputfile.imghdr = type('imghdr', (), {'what': imghdr_what})()
-    sys.modules['imghdr'] = telegram.files.inputfile.imghdr
-
 import telegram.ext as tg
 from telethon.sessions import MemorySession
 from telethon import TelegramClient
