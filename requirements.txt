@@ -1,0 +1,8 @@
+python-telegram-bot==13.7
+telethon==1.24.0
+pyrogram==1.4.1
+tgcrypto==1.2.3
+psutil==5.8.0
+prettytable==2.4.0
+sqlalchemy==1.4.23
+python-decouple==3.6
